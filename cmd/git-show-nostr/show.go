@@ -1,4 +1,4 @@
-package cmd
+package main
 
 import (
 	"context"
@@ -9,12 +9,13 @@ import (
 
 	"github.com/nbd-wtf/go-nostr"
 	"github.com/nbd-wtf/go-nostr/nip19"
-	"github.com/npub1zenn0/nostr-git-cli/src/internal/git"
 	"github.com/samber/lo"
 	"github.com/samber/lo/parallel"
+
+	"github.com/bndw/nostr-git-cli/internal/git"
 )
 
-func Show(relays []string, hashtag string, user string, eventID string) (string, error) {
+func show(relays []string, hashtag string, user string, eventID string) (string, error) {
 	relays, err := git.GetRelays(relays)
 	if err != nil {
 		return "", fmt.Errorf("error in relays: %w", err)

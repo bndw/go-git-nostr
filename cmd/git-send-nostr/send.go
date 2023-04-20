@@ -1,4 +1,4 @@
-package cmd
+package main
 
 import (
 	"context"
@@ -8,13 +8,14 @@ import (
 
 	"github.com/nbd-wtf/go-nostr"
 	"github.com/nbd-wtf/go-nostr/nip19"
-	"github.com/npub1zenn0/nostr-git-cli/src/internal/git"
 	"github.com/samber/lo"
 	"github.com/samber/lo/parallel"
+
+	"github.com/bndw/nostr-git-cli/internal/git"
 )
 
-// Send a git patch to nostr relays.
-func Send(hash string, relays []string, sec string, dryRun bool) (string, error) {
+// send a git patch to nostr relays.
+func send(hash string, relays []string, sec string, dryRun bool) (string, error) {
 	patch, err := git.Run("format-patch", "--stdout", hash)
 	if err != nil {
 		return "", fmt.Errorf("error getting patch: %w", err)

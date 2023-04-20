@@ -5,7 +5,6 @@ import (
 	"log"
 
 	"github.com/alecthomas/kong"
-	"github.com/npub1zenn0/nostr-git-cli/src/apps/send/cmd"
 )
 
 var CLI struct {
@@ -24,7 +23,7 @@ func main() {
 	ctx := kong.Parse(&CLI)
 	switch ctx.Command() {
 	case "<commit>":
-		id, err := cmd.Send(CLI.Commit, CLI.Relay, CLI.SecretKey, CLI.DryRun)
+		id, err := send(CLI.Commit, CLI.Relay, CLI.SecretKey, CLI.DryRun)
 		if err != nil {
 			log.Fatal(err)
 		} else if !CLI.DryRun {

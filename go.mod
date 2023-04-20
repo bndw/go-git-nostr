@@ -1,4 +1,4 @@
-module github.com/npub1zenn0/nostr-git-cli
+module github.com/bndw/nostr-git-cli
 
 go 1.20
 
